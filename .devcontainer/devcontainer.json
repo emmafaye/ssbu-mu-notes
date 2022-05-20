@@ -1,0 +1,187 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/main/containers/docker-existing-dockerfile
+{
+    "name": "ssbu-mu-notes",
+    // Sets the run context to one level up instead of the .devcontainer folder.
+    "context": "..",
+    // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+    "dockerFile": "../Dockerfile",
+    "runArgs": [
+        "--name",
+        "ssbu-mu-notes",
+        "--env-file",
+        ".env",
+        "-p",
+        "8080:3000"
+    ],
+    // Node Workspace
+    // "workspaceMount": "source=${localWorkspaceFolder},target=/home/node/app,type=bind,consistency=cached",
+    // "workspaceFolder": "/home/node/app",
+
+    "workspaceMount": "source=${localWorkspaceFolder},target=/usr/src/app,type=bind,consistency=cached",
+    "workspaceFolder": "/usr/src/app",
+
+    // Jekyll Workspace
+    // "workspaceMount": "source=${localWorkspaceFolder},target=/srv/jekyll,type=bind,consistency=cached",
+    // "workspaceFolder": "/srv/jekyll",
+    "shutdownAction": "stopContainer",
+
+    // Set *default* container specific settings.json values on container create.
+    "settings": {
+        // General
+        "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+        "window.titleBarStyle": "custom",
+        "window.customMenuBarAltFocus": false,
+
+        // Terminal
+        "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+        "terminal.integrated.shell.linux": "/bin/zsh",
+        // The below terminal configuration isn't working for whatever reason, I'm using the above configuration for now.
+        "terminal.integrated.profiles.windows": {
+            "PowerShell": {
+                "source": "PowerShell",
+                "icon": "terminal-powershell"
+            },
+            "Command Prompt": {
+                "path": [
+                    "${env:windir}\\Sysnative\\cmd.exe",
+                    "${env:windir}\\System32\\cmd.exe"
+                ],
+                "icon": "terminal-cmd"
+            },
+            "Git Bash": {
+                "path": ["C:\\Program files\\Git\\bin\\bash.exe"],
+                "icon": "terminal-bash"
+            }
+        },
+        "terminal.integrated.profiles.linux": {
+            "zsh": {
+                "path": "/bin/zsh",
+                "args": ["-l"]
+            }
+        },
+        "terminal.integrated.defaultProfile.windows": "Git Bash",
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.copyOnSelection": true,
+        "terminal.integrated.rightClickBehavior": "paste",
+        "terminal.integrated.cursorBlinking": true,
+        "terminal.integrated.fontWeightBold": "500",
+
+        // Status Bar
+        "TerminalStatusBar.ToggleEditStatusBar": true,
+        "resmon.show.cpuusage": true, // Show CPU Usage. In Windows, this percentage is calculated with processor time, which doesn't quite match the task manager figure.
+        "resmon.show.mem": true, // Show consumed and total memory as a fraction.
+        "resmon.show.cpufreq": false, // Show CPU Frequency.
+        "resmon.show.battery": false, // Show battery percentage remaining.
+        "resmon.show.disk": false, // Toggles the display of disk space information.
+        "resmon.color": "#CA51AC", // Color of the status bar text in hex code
+
+        // Jekyll
+        "scss.lint.unknownAtRules": "ignore",
+        "css.lint.unknownAtRules": "ignore",
+        "[markdown]": {
+            "editor.quickSuggestions": true
+        },
+        "liquid.format": true,
+
+        // Javascript
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+
+        // Python
+        "python.linting.pylintEnabled": true,
+        "python.linting.enabled": true,
+        "python.pythonPath": "/usr/local/bin/python",
+        "python.jediEnabled": false,
+        "python.linting.pylintArgs": ["--load-plugins"],
+
+        // Extension Type
+        // ui        - Cannot directly access files in the remote workspace (themes, snippets, language grammars, and keymaps)
+        // workspace - Run on the same machine as where the workspace is located. When in a local workspace, Workspace Extensions run on the local machine
+        // https://code.visualstudio.com/api/advanced-topics/remote-extensions
+        "remote.extensionKind": {
+            "ms-azuretools.vscode-docker": ["workspace"],
+            "thomaskarachristos.terminal-statusbar": ["workspace"],
+            "fabiospampinato.vscode-todo-plus": ["workspace"]
+        }
+    },
+
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+        // Theme / IDE
+        "dracula-theme.theme-dracula",
+        "oderwat.indent-rainbow",
+        "PKief.material-icon-theme",
+
+        // QoL
+        "thomaskarachristos.terminal-statusbar",
+        "fabiospampinato.vscode-todo-plus",
+        "actboy168.tasks",
+        "spmeesseman.vscode-taskexplorer",
+        "alefragnani.Bookmarks",
+        "liamhammett.inline-parameters",
+        "mutantdino.resourcemonitor",
+        "jasonlhy.hungry-delete",
+
+        // AI-Assisted
+        "visualstudioexptteam.vscodeintellicode",
+        "GitHub.copilot",
+
+        // Code Reviews
+        "github.vscode-pull-request-github",
+
+        // HTML / CSS
+        "mrmlnc.vscode-scss",
+
+        // JavaScript / TypeScript
+        "snyk-security.vscode-vuln-cost",
+        "wix.vscode-import-cost",
+
+        // React
+        "pranshuagrawal.create-component",
+
+        // Jekyll
+        "2sherpas.2sherpas",
+        "sissel.shopify-liquid",
+        "rohgarg.jekyll-post",
+        "osteele.jekyll",
+        "eliostruyf.vscode-front-matter",
+
+        // Ruby
+        "rebornix.Ruby",
+
+        // Python
+        "ms-python.python",
+
+        // XML
+        "redhat.vscode-xml",
+
+        // dotenv
+        "mikestead.dotenv",
+
+        // Beautifies the following languages:
+        // JavaScript · TypeScript · Flow · JSX · JSON
+        // CSS · SCSS · Less
+        // HTML · Vue · Angular HANDLEBARS · Ember · Glimmer
+        // GraphQL · Markdown · YAML
+        "esbenp.prettier-vscode"
+    ],
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Uncomment the next line to run commands after the container is created - for example installing git.
+    // "postCreateCommand": "cd docs && bundle install",
+
+    // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+    // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+    // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-in-docker.
+    // "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+
+    // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "root"
+    // "remoteEnv": { "MY_VARIABLE": "some-value" }
+}

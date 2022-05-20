@@ -1,0 +1,91 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.autoSave": "afterDelay",
+		"workbench.colorTheme": "Dracula",
+		"workbench.iconTheme": "material-icon-theme",
+		"editor.fontSize": 12,
+		"terminal.integrated.fontSize": 12,
+		"debug.console.fontSize": 12,
+		"debug.console.fontFamily": "Fira Code",
+		"editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
+		"editor.fontLigatures": true,
+        "git.enableSmartCommit": true,
+		"editor.tabSize": 4,
+		"editor.insertSpaces": true,
+		// "editor.detectIndentation": true
+		// "editor.autoIndent": true,
+
+		"editor.formatOnSave": true,
+        "files.eol": "\n",
+        "editor.suggestSelection": "first",
+
+		"prettier.singleQuote": true,
+		"prettier.eslintIntegration": true,
+		"prettier.tabWidth": 4,
+		"prettier.useTabs": false,
+
+        // File Exclusion
+        "files.exclude": {
+            // Jekyll
+            "**/.jekyll-cache": true,
+            "**/_site": true,
+
+            //Python
+            "**/__pycache__": true
+        },
+
+		// Color Customizations 
+		// https://code.visualstudio.com/api/references/theme-color
+		"workbench.colorCustomizations": {
+			"titleBar.activeForeground": "#FFFFFF",
+			"titleBar.inactiveForeground": "#ffffff71",
+			"titleBar.activeBackground": "#3f768d67",
+			"titleBar.inactiveBackground": "#3f768d34",
+			"activityBar.background": "#3f768d", 
+			"activityBar.foreground": "#FFFFFF",
+			"activityBar.inactiveForeground": "#ffffff63",
+			"activityBar.activeBackground": "#ffffff3a"
+		},
+		"editor.bracketPairColorization.enabled": true,
+
+		// Using the light mode
+		"indentRainbow.indicatorStyle": "light",
+	
+		// we use a simple 1 pixel wide line
+		"indentRainbow.lightIndicatorStyleLineWidth": 1,
+
+		// The delay in ms until the editor gets updated.
+		"indentRainbow.updateDelay": 100, // 10 makes it super fast but may cost more resources
+	
+		// Defining custom colors instead of default "Rainbow" for dark backgrounds.
+		"indentRainbow.colors": [
+			"rgba(255,255,255,0.3)",
+			"rgba(255,127,255,0.3)",
+			"rgba(79,236,236,0.3)",
+			"rgba(127,255,127,0.3)",
+			"rgba(123, 40, 255, 0.3)",
+			"rgba(222, 87, 23, 0.3)"
+		],
+		
+		// If error color is disabled, indent colors will be rendered until the
+		// length of rendered characters (white spaces, tabs, and other ones) is divisible by tabsize.
+		// Turn on this option to render white spaces and tabs only.
+		"indentRainbow.colorOnWhiteSpaceOnly": false, // false is the default
+
+		// For which languages indent-rainbow should be activated (if empty it means all).
+		// "indentRainbow.includedLanguages": [], // for example ["nim", "nims", "python"]
+
+		// For which languages indent-rainbow should be deactivated (if empty it means none).
+		"indentRainbow.excludedLanguages": ["plaintext"],
+
+		"indentRainbow.ignoreErrorLanguages" : [
+			"markdown",
+			"haskell"
+		]
+	}
+}
